@@ -20,6 +20,7 @@ public class QuasarFiberRing {
         protected boolean wait = true;
 
         public Node(int id) {
+
             super(String.format("%s-%d", Node.class.getSimpleName(), id));
         }
 
@@ -50,7 +51,8 @@ public class QuasarFiberRing {
             nodes[i].nextNode = nodes[(i + 1) % iterations];
 
         // Start fibers.
-        for (final Node fiber : nodes) fiber.start();
+        for (final Node node : nodes)
+            node.start();
 
         // Initiate the ring.
         final Node first = nodes[0];
