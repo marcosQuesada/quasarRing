@@ -95,13 +95,12 @@ public class QuasarFiberChannelRingTest {
 
     @Test
     public void testQuasarFiberChannelRing() throws Exception {
-        Logger log = LoggerFactory.getLogger(QuasarFiberRingTest.class);
-
-        log.trace("Starting");
-        int workerCount = 10;
-        int ringSize = 10;
-        QuasarFiberChannelRing qfr = new QuasarFiberChannelRing(workerCount, ringSize);
-        qfr.doRing();
-
+        int workerCount = 2;
+        int iterations = 4;
+        QuasarFiberChannelRing qfr = new QuasarFiberChannelRing(workerCount, iterations);
+        int[] sequences = qfr.doRing();
+        for (int item :sequences){
+          //  assertEquals(item, iterations);
+        }
     }
 }

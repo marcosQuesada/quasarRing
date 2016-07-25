@@ -46,7 +46,7 @@ public class QuasarFiberRing {
         for (int i = 0; i < nodesOnRing; i++)
             nodes[i] = new Node(i);
 
-        // Set next fiber pointers.
+        // Set nextNode fiber pointers.
         for (int i = 0; i < nodesOnRing; i++)
             nodes[i].nextNode = nodes[(i + 1) % nodesOnRing];
 
