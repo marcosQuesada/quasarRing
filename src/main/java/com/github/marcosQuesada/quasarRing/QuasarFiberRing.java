@@ -42,13 +42,13 @@ public class QuasarFiberRing {
 
     public int[] makeRing() throws Exception {
         // Create fibers.
-        final Node[] nodes = new Node[iterations];
-        for (int i = 0; i < iterations; i++)
+        final Node[] nodes = new Node[nodesOnRing];
+        for (int i = 0; i < nodesOnRing; i++)
             nodes[i] = new Node(i);
 
         // Set next fiber pointers.
-        for (int i = 0; i < iterations; i++)
-            nodes[i].nextNode = nodes[(i + 1) % iterations];
+        for (int i = 0; i < nodesOnRing; i++)
+            nodes[i].nextNode = nodes[(i + 1) % nodesOnRing];
 
         // Start fibers.
         for (final Node node : nodes)

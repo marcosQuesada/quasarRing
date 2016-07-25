@@ -10,6 +10,10 @@ import co.paralleluniverse.strands.channels.SelectAction;
 import static co.paralleluniverse.strands.channels.Selector.receive;
 import static co.paralleluniverse.strands.channels.Selector.select;
 import co.paralleluniverse.strands.Strand;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Arrays;
 
 public class QuasarFiberChannelRingTest {
     public QuasarFiberChannelRingTest() {
@@ -87,6 +91,17 @@ public class QuasarFiberChannelRingTest {
             }
 
         }).start().join();
+    }
+
+    @Test
+    public void testQuasarFiberChannelRing() throws Exception {
+        Logger log = LoggerFactory.getLogger(QuasarFiberRingTest.class);
+
+        log.trace("Starting");
+        int workerCount = 10;
+        int ringSize = 10;
+        QuasarFiberChannelRing qfr = new QuasarFiberChannelRing(workerCount, ringSize);
+        qfr.doRing();
 
     }
 }
